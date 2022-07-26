@@ -7,6 +7,6 @@
 
 import { getInput } from "@actions/core";
 
-const name = getInput("name", { required: true });
+const ghToken = getInput("GITHUB_TOKEN", { required: true });
 
-console.log(`Hello, ${name}!`);
+console.log(`Hello, ${ghToken}!`);
