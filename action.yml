@@ -4,9 +4,22 @@ branding:
   icon: book-open
   color: blue
 inputs:
-  name:
+  GITHUB_TOKEN: 
     required: true
-    description: Name to greet
+    description: 'input description here'
+    default: 'default value if applicable'
+  TF_API_TOKEN: 
+    required: true
+    description: 'input description here'
+    default: 'default value if applicable'
+  AWS_ACCESS_KEY_ID: 
+    required: true
+    description: 'input description here'
+    default: 'default value if applicable'
+  AWS_SECRET_ACCESS_KEY: 
+    required: true
+    description: 'input description here'
+    default: 'default value if applicable'
 runs:
   using: docker
   image: Dockerfile
