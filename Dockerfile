@@ -8,8 +8,7 @@ RUN npm run build \
   && npm prune --production
 FROM node:12-alpine
 RUN apk update
-RUN apk add --no-cache tini
-RUN apk add install git
+RUN apk add --no-cache tini git
 COPY --from=builder action/package.json .
 COPY --from=builder action/lib lib/
 COPY --from=builder action/node_modules node_modules/
