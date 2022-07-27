@@ -1,9 +1,13 @@
-          echo "::set-output debug=$(if [ -z ${{ secrets.ALGOSEC_IS_DEBUG }} ]; then echo false; else echo true; fi;)"
+#!/bin/bash
+          IS_DEBUG=$(secrets.ALGOSEC_IS_DEBUG)
+          GITHUB_BASE_REF=$(github.base_ref)
+          GITHUB_SHA=$(github.sha)
+          echo "::set-output debug=$(if [ -z $IS_DEBUG ]; then echo false; else echo true; fi;)"
  # Pull Request
-          git fetch origin "${{ github.base_ref }}" --depth=1
+          git fetch origin "$BASE_REF" --depth=1
           # Get the list of all changed resources
-          diff_result=$(git diff --name-only "origin/${{ github.base_ref }}" ${{ github.sha }} )
-          echo "Diff between origin/${{ github.base_ref }} and ${{ github.sha }}"
+          diff_result=$(git diff --name-only "origin/$BASE_REF" $GITHUB_SHA )
+          echo "Diff between origin/$BASE_REF and $GITHUB_SHA"
 
           # Extract terraform's files
           terraform_files=$(echo $diff_result | tr -s '[[:space:]]' '\n' | grep -o '.*\.tf$')
