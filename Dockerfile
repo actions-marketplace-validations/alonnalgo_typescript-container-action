@@ -6,10 +6,12 @@ COPY tsconfig*.json ./
 COPY src/ src/
 RUN npm run build \
   && npm prune --production
-
 FROM node:12-alpine
 RUN apk add --no-cache tini
+RUN apt-get -y update
+RUN apt-get -y install git
 COPY --from=builder action/package.json .
 COPY --from=builder action/lib lib/
 COPY --from=builder action/node_modules node_modules/
+RUN /changedFiles.sh
 ENTRYPOINT [ "/sbin/tini", "--", "node", "/lib/index.js" ]
