@@ -1,4 +1,5 @@
 #!/bin/bash
+           printenv 
           # echo "::set-output debug=$(if [ -z ${ALGOSEC_IS_DEBUG} ]; then echo false; else echo true; fi;)"
  # Pull Request
           git fetch origin "${GITHUB_BASE_REF}" --depth=1
