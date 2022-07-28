@@ -35,7 +35,7 @@ inputs:
 runs:
   using: docker
   image: Dockerfile
-   env:
+  env:
     GITHUB_TOKEN: ${{ inputs.gh_token }}
     GITHUB_BASE_REF: ${{ inputs.gh_base_ref }}
     GITHUB_SHA: ${{ inputs.gh_sha }}
