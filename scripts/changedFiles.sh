@@ -1,4 +1,5 @@
 #!/bin/bash
+           printenv 
           # echo "::set-output debug=$(if [ -z ${ALGOSEC_IS_DEBUG} ]; then echo false; else echo true; fi;)"
  # Pull Request
           printenv 
@@ -29,3 +30,4 @@
 
           # echo "Prepared working matrix: $matrix_output"
           # echo "::set-output name=matrix::${matrix_output}"
+
