@@ -3,5 +3,5 @@ lib/
 node_modules/
 .DS_Store
 *.log
-my.env
-my.secrets
+.env
+.secrets
