@@ -4,30 +4,42 @@ branding:
   icon: book-open
   color: blue
 inputs:
-  TF_API_TOKEN:
+  tf_token:
     required: true
     description: "input description here"
     default: "default value if applicable"
-  AWS_ACCESS_KEY_ID:
+  tf_version:
     required: true
     description: "input description here"
     default: "default value if applicable"
-  AWS_SECRET_ACCESS_KEY:
+  aws_access_key_id:
     required: true
     description: "input description here"
     default: "default value if applicable"
-  GITHUB_TOKEN:
+  aws_secret_access_key:
     required: true
     description: "input description here"
     default: "default value if applicable"
-  GITHUB_BASE_REF:
+  gh_token:
     required: true
     description: "input description here"
     default: "default value if applicable"
-  GITHUB_SHA:
+  gh_base_ref:
+    required: true
+    description: "input description here"
+    default: "default value if applicable"
+  gh_sha:
     required: true
     description: "input description here"
     default: "default value if applicable"
 runs:
   using: docker
   image: Dockerfile
+   env:
+    GITHUB_TOKEN: ${{ inputs.gh_token }}
+    GITHUB_BASE_REF: ${{ inputs.gh_base_ref }}
+    GITHUB_SHA: ${{ inputs.gh_sha }}
+    AWS_ACCESS_KEY_ID: ${{ inputs.aws_access_key_id }}
+    AWS_SECRET_ACCESS_KEY: ${{ inputs.aws_secret_access_key }}
+    TF_VERSION: ${{ inputs.tf_version }}
+    TF_TOKEN: ${{ inputs.tf_token }}
